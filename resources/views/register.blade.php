@@ -1,7 +1,9 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <title>Register Page</title>
 @extends('layouts.app')
 @section('content')
     <h1 class="text-center mt-5">Registration Form</h1>
+    
     <form method="POST" action="/user"  >
         @csrf
         <div class="mb-3">
@@ -20,7 +22,7 @@
             <label for="cpassword" class="form-label">Confirm Password</label>
             <input  name="cpassword" type="cpassword" class="form-control cpass" id="cpassword" placeholder="XXXXXXXX">
         </div>
-        <input type="submit" onclick="return return true" class="btn btn-dark"/>
+        <input type="submit" onclick="return true" class="btn btn-dark"/>
         </br>
         <div class="text-center fs-5">
             <a href="{{route('loginroute')}}">Go To The Login Form</a>
@@ -28,28 +30,37 @@
     </form>
     
     <script>
-        //Thia is JS code...
-        function pradeep(){
-         
-        //get the password value
-        var p = document.querySelector('.pass').value;
-         console.log('P>>'p);
+         function pradeep(){
+            //Get the password value
+            var p = document.querySelector('.pass').value;
 
-        //get the cpassword value
-        var cp = document.querySelector('.cpass').value;
-         console.log('cp>>'cp);
+            console.log('p>>',p);
 
-        if(p == cp){
-            rerturn true 
-        }else{
-            alert("Passord doesn't match");
-            return false 
-        }
-        
+            //Get the password value
+            var cp = document.querySelector('.cpass').value;
 
+            console.log('cp>>',cp);
 
-
+            if(p == cp){
+                   
+                Swal.fire({
+                title: 'Success!',
+                text: 'ID Register Successfully',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+            return true
+            }else {
+                Swal.fire({
+                    title: "Error",
+                    text: "Password doesn't match",
+                    icon: 'error',
+                    confirmButtonText: 'Try Again'
+                });
+                return false;
+            }
         }
 
     </script>
+  
 @endsection

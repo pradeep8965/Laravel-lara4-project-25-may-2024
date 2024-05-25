@@ -28,6 +28,10 @@ class CustomUserController extends Controller
      */
     public function store(Request $request)
     {
+        //we have to do server site valitation
+        //dd(request);
+        dd($request->all()); //dumo nd die
+        
         //
         return" store method";
     }
